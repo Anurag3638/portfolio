@@ -1,10 +1,35 @@
 const selectElement = document.getElementById('theme');
 const theme = document.getElementById('main');
+const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+console.log(isDark);
+if (isDark) {
+    console.log("in dark mode");
+    theme.classList.remove('bg-white','black');
+    theme.classList.add('bg-black','white');
+}
+else{
+    theme.classList.remove('bg-black','white');
+    theme.classList.add('bg-white','black');
+    console.log("Light mode enabled");
+}
 
 selectElement.addEventListener('change',function(){
-    theme.classList.remove('white','green','yellow');
-    theme.classList.add(selectElement.value);
+    if (selectElement.value=='default') {
+        if (isDark==true) {
+            theme.classList.remove('black','white','green','yellow');
+            theme.classList.add('white');
+        }
+        else{
+            theme.classList.remove('black','white','green','yellow');
+            theme.classList.add('black');
+        }
+    }
+    else{
+        theme.classList.remove('black','white','green','yellow');
+        theme.classList.add(selectElement.value);
+    }
 });
+
 
 const coords = { x:0, y:0};
 const circles = document.querySelectorAll(".circle");
@@ -41,3 +66,6 @@ function animateCircles(){
 }
 
 animateCircles();
+
+
+

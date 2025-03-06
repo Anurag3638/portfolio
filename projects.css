@@ -1,0 +1,14 @@
+.container div section {
+    gap: 5vw;
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+    height: 60vh;
+}
+
+.container div{
+    margin-top: 10px;
+}
+.container div *{
+    margin-top: 10px;
+}
